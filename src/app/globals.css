@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+@theme {
+  /* Neutrals — crisp, cool-leaning off-white base with a rich near-black ink */
+  --color-bg: #f4f4f1;
+  --color-surface: #ffffff;
+  --color-surface-2: #ecebe6;
+  --color-ink: #171614;
+  --color-ink-soft: #45433d;
+  --color-muted: #77746b;
+  --color-line: #e3e1d9;
+
+  /* Accent — a single, refined terracotta used sparingly for emphasis */
+  --color-accent: #bb4d34;
+  --color-accent-strong: #a23f28;
+  --color-accent-soft: #f5ebe6;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-ink);
+  color: var(--color-bg);
+}
+
+@layer utilities {
+  /* Display type for headings */
+  .font-display {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    letter-spacing: -0.015em;
+  }
+
+  .text-accent {
+    color: var(--color-accent);
+  }
+
+  /* Highlighted word inside a heading — italic display serif in accent */
+  .emphasis {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .surface-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+  }
+
+  .card-hover {
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.4s ease, box-shadow 0.4s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in srgb, var(--color-ink) 24%, transparent);
+    box-shadow: 0 24px 50px -30px rgba(23, 21, 15, 0.35);
+  }
+
+  .hairline {
+    border-color: var(--color-line);
+  }
+
+  /*
+   * CSS-only entrance for the hero. This is intentionally NOT JavaScript-driven:
+   * the animation plays purely from CSS so content is reliably visible even if
+   * the client bundle never hydrates (e.g. dev cross-origin blocks, no-JS).
+   * Elements begin hidden only while the animation is guaranteed to run, and the
+   * `both` fill keeps the final (visible) state.
+   */
+  .reveal-rise {
+    animation: reveal-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .float-y {
+    animation: float-y 6s ease-in-out infinite;
+  }
+  /* Continuous logo marquee (track is duplicated; -50% shifts exactly one copy). */
+  .animate-marquee {
+    animation: marquee 34s linear infinite;
+  }
+  .marquee-mask {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 12%,
+      #000 88%,
+      transparent
+    );
+    mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes reveal-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Respect reduced-motion: never hide, never animate. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal-rise,
+  .float-y,
+  .animate-marquee {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Subtle, theme-matched scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: #d3d1c8;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c2bfb4;
+}
