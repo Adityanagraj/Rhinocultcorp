@@ -48,7 +48,7 @@ export default function Footer() {
                 height={36}
                 className="h-9 w-auto"
               />
-              <span className="text-base font-semibold text-ink">{site.name}</span>
+              <span className="font-brand text-lg text-ink">{site.name}</span>
             </a>
             <p className="mt-4 text-sm leading-relaxed text-muted">{site.description}</p>
           </div>

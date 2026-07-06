@@ -47,7 +47,7 @@ export default function Navbar() {
             priority
             className="h-9 w-auto"
           />
-          <span className="font-display text-[1.05rem] font-semibold tracking-tight text-ink">
+          <span className="font-brand text-[1.15rem] text-ink">
             {site.name}
           </span>
         </a>

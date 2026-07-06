@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Fraunces } from "next/font/google";
+import { Inter, Fraunces, Shrikhand } from "next/font/google";
 import "./globals.css";
 import { site } from "@/config/site";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -16,6 +16,14 @@ const fraunces = Fraunces({
   subsets: ["latin"],
   display: "swap",
   style: ["normal", "italic"],
+});
+
+// Bold display serif used for the brand wordmark.
+const shrikhand = Shrikhand({
+  variable: "--font-shrikhand",
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -48,7 +56,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${fraunces.variable} h-full antialiased`}
+      className={`${inter.variable} ${fraunces.variable} ${shrikhand.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         {children}

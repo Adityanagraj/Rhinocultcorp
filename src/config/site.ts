@@ -22,7 +22,7 @@ export const site = {
   // Contact details (placeholders)
   email: "rhinocult2023@gmail.com",
   phone: "+91 63629 90365",
-  address: "1838, JAYAMAHAL, TALUK OFFICE ROAD, OPPOSIT DEEPASRI HOSTEL, Nelamangala, Bengaluru Rural, Karnataka, 562123",
+  address: "1838, JAYAMAHAL, TALUK OFFICE ROAD, OPPOSITE TO DEEPASRI HOSTEL, Nelamangala, Bengaluru Rural, Karnataka, 562123",
 
   // WhatsApp: international format, digits only, no "+"
   whatsappNumber: "6362990365",

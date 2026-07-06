@@ -24,6 +24,27 @@ const testimonials = [
     role: "Founder, GoAvoAI",
     initials: "MA",
   },
+  {
+    quote:
+      "It was 1:00 AM, and we had an unexpected last-minute requirement for additional swag for our AWS event in Hyderabad. Their team handled the procurement seamlessly and ensured everything was delivered on time.",
+    name: "Anusha reddy",
+    role: "AWS HR",
+    initials: "AR",
+  },
+  {
+    quote:
+      "We ordered customized corporate gift hampers for our leadership event, and the entire experience was exceptional. The quality, attention to detail, and timely delivery exceeded our expectations. The team was responsive throughout and made the entire process effortless",
+    name: "Saideep",
+    role: "LEAD ENGINEER",
+    initials: "SD",
+  },
+  {
+    quote:
+      "Finding a gifting partner who understands both quality and deadlines is rare. They delivered beautifully curated gift boxes for our event, and the feedback from attendees was fantastic. A reliable team you can count on",
+    name: "Impana",
+    role: "HR-66 Gears",
+    initials: "IM",
+  },
 ];
 
 export default function Testimonials() {
@@ -41,9 +62,13 @@ export default function Testimonials() {
         />
       </Reveal>
 
-      <div className="mt-12 grid gap-5 md:grid-cols-3">
+      <div className="-mx-5 mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-px-5 px-5 pb-4 sm:-mx-8 sm:scroll-px-8 sm:px-8">
         {testimonials.map((t, i) => (
-          <Reveal key={t.name} delay={i * 0.1}>
+          <Reveal
+            key={t.name}
+            delay={(i % 3) * 0.1}
+            className="w-[82%] shrink-0 snap-start sm:w-[360px]"
+          >
             <figure className="card-hover surface-card flex h-full flex-col rounded-2xl p-6">
               <Quote size={28} className="text-accent" strokeWidth={1.5} />
               <div className="mt-3 flex gap-0.5">

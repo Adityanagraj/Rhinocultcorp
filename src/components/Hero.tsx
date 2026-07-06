@@ -24,7 +24,39 @@ export default function Hero() {
       />
 
       <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
-        <div className="mx-auto max-w-3xl text-center">
+        {/* Featured product banner — portrait on mobile, landscape on larger screens */}
+        <div
+          className="reveal-rise mx-auto max-w-5xl"
+          style={{ animationDelay: "0ms" }}
+        >
+          {/* Mobile: portrait */}
+          <div className="mx-auto max-w-sm overflow-hidden rounded-2xl border border-line bg-surface p-1.5 shadow-[0_50px_90px_-55px_rgba(23,21,15,0.5)] md:hidden">
+            <Image
+              src="/hero-corporate-gifts-mobile.png"
+              alt="A curated spread of premium branded gifts drinkware, luggage, tech accessories, notebooks and gift sets, each customizable with your logo."
+              width={576}
+              height={1024}
+              priority
+              sizes="(max-width: 768px) 100vw, 576px"
+              className="h-auto w-full rounded-xl"
+            />
+          </div>
+
+          {/* Desktop / browser: landscape */}
+          <div className="hidden overflow-hidden rounded-[1.75rem] border border-line bg-surface p-2 shadow-[0_50px_90px_-55px_rgba(23,21,15,0.5)] md:block">
+            <Image
+              src="/hero-corporate-gifts.png"
+              alt="A curated spread of premium branded gifts drinkware, luggage, tech accessories, notebooks and gift sets, each customizable with your logo."
+              width={1024}
+              height={576}
+              priority
+              sizes="(max-width: 1024px) 100vw, 1024px"
+              className="h-auto w-full rounded-[1.4rem]"
+            />
+          </div>
+        </div>
+
+        <div className="mx-auto mt-12 max-w-3xl text-center sm:mt-14">
           <span
             className="reveal-rise inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.22em] text-muted"
             style={{ animationDelay: "0ms" }}
@@ -61,38 +93,6 @@ export default function Hero() {
               <MessageCircle size={16} className="text-[#1f9d55]" />
               Chat on WhatsApp
             </a>
-          </div>
-        </div>
-
-        {/* Featured product banner — portrait on mobile, landscape on larger screens */}
-        <div
-          className="reveal-rise mx-auto mt-12 max-w-5xl sm:mt-14"
-          style={{ animationDelay: "200ms" }}
-        >
-          {/* Mobile: portrait */}
-          <div className="mx-auto max-w-sm overflow-hidden rounded-2xl border border-line bg-surface p-1.5 shadow-[0_50px_90px_-55px_rgba(23,21,15,0.5)] md:hidden">
-            <Image
-              src="/hero-corporate-gifts-mobile.png"
-              alt="A curated spread of premium branded gifts drinkware, luggage, tech accessories, notebooks and gift sets, each customizable with your logo."
-              width={576}
-              height={1024}
-              priority
-              sizes="(max-width: 768px) 100vw, 576px"
-              className="h-auto w-full rounded-xl"
-            />
-          </div>
-
-          {/* Desktop / browser: landscape */}
-          <div className="hidden overflow-hidden rounded-[1.75rem] border border-line bg-surface p-2 shadow-[0_50px_90px_-55px_rgba(23,21,15,0.5)] md:block">
-            <Image
-              src="/hero-corporate-gifts.png"
-              alt="A curated spread of premium branded gifts drinkware, luggage, tech accessories, notebooks and gift sets, each customizable with your logo."
-              width={1024}
-              height={576}
-              priority
-              sizes="(max-width: 1024px) 100vw, 1024px"
-              className="h-auto w-full rounded-[1.4rem]"
-            />
           </div>
         </div>
 
