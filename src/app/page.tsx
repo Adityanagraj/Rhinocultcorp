@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import Ticker from "@/components/Ticker";
 import Clients from "@/components/Clients";
 import Brands from "@/components/Brands";
 import Catalogues from "@/components/Catalogues";
@@ -16,6 +17,10 @@ export default function Home() {
     <>
       <Navbar />
       <main className="flex-1">
+        {/* Top offset clears the fixed navbar so the banner sits just below it. */}
+        <div className="mt-[60px] sm:mt-[68px]">
+          <Ticker />
+        </div>
         <Hero />
         <Clients />
         <Brands />

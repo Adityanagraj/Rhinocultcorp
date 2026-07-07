@@ -16,7 +16,7 @@ const stats = [
  */
 export default function Hero() {
   return (
-    <section id="home" className="relative overflow-hidden pt-32 pb-20 sm:pt-36 sm:pb-24">
+    <section id="home" className="relative overflow-hidden pt-10 pb-20 sm:pt-14 sm:pb-24">
       {/* Subtle background texture for character */}
       <div
         aria-hidden
