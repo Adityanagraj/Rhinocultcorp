@@ -5,10 +5,10 @@
  * Example: India number +91 98765 43210  ->  "919876543210"
  */
 export const site = {
-  name: "Rhincult Corporate",
+  name: "Rhinocult Corporate",
   tagline: "Thoughtful Gifts, Stronger Connections",
   description:
-    "Rhincult Corporate helps brands source, customize, and deliver premium corporate gifts and branded merchandise from drinkware and tech to travel and lifestyle essentials, delivered on time, every time.",
+    "Rhinocult Corporate helps brands source, customize, and deliver premium corporate gifts and branded merchandise from drinkware and tech to travel and lifestyle essentials, delivered on time, every time.",
   keywords: [
     "corporate gifting",
     "branded merchandise",

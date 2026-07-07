@@ -41,14 +41,14 @@ export default function Clients() {
                     <img
                       src={c.logo}
                       alt={`${c.name} logo`}
-                      className="h-7 w-auto opacity-50 grayscale transition-all duration-300 group-hover/logo:opacity-100 group-hover/logo:grayscale-0 sm:h-8"
+                      className="h-7 w-auto object-contain transition-transform duration-300 group-hover/logo:scale-110 sm:h-8"
                     />
                     <span className="text-brand-gradient text-[0.7rem] font-semibold uppercase tracking-[0.14em]">
                       {c.name}
                     </span>
                   </>
                 ) : (
-                  <span className="font-display whitespace-nowrap text-xl font-semibold text-ink/50 transition-colors hover:text-ink sm:text-2xl">
+                  <span className="font-display whitespace-nowrap text-xl font-semibold text-ink/70 transition-colors hover:text-ink sm:text-2xl">
                     {c.name}
                   </span>
                 )}
