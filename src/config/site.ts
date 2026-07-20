@@ -20,7 +20,7 @@ export const site = {
   url: "https://example.com",
 
   // Contact details (placeholders)
-  email: "rhinocult2023@gmail.com",
+  email: "info@rhinocult.com",
   phone: "+91 63629 90365",
   address: "1838, JAYAMAHAL, TALUK OFFICE ROAD, OPPOSITE TO DEEPASRI HOSTEL, Nelamangala, Bengaluru Rural, Karnataka, 562123",
 

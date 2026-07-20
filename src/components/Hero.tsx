@@ -3,9 +3,9 @@ import { MessageCircle } from "lucide-react";
 import { buildWhatsAppUrl, site } from "@/config/site";
 
 const stats = [
-  { value: "500+", label: "Products to brand" },
-  { value: "50+", label: "Brands trust us" },
-  { value: "48h", label: "Quote turnaround" },
+  { value: "5000+", label: "Products delivered" },
+  { value: "500+", label: "Brands trust us" },
+  { value: "1hr", label: "Quote turnaround" },
 ];
 
 /**

@@ -1,12 +1,17 @@
-import { Target, HeartHandshake, Rocket, ShieldCheck } from "lucide-react";
+import { HeartHandshake, Rocket, Truck, Palette } from "lucide-react";
 import Section, { SectionHeading } from "@/components/ui/Section";
 import Reveal from "@/components/ui/Reveal";
 
 const values = [
   {
-    icon: Target,
-    title: "Outcome-driven",
-    body: "Every decision maps to a measurable result. We obsess over impact, not vanity metrics.",
+    icon: Truck,
+    title: "Pan-India Delivery",
+    body: "We deliver to individual employee home addresses across India not just one company warehouse. Ideal for remote and hybrid teams.",
+  },
+  {
+    icon: Palette,
+    title: "End-to-End Branding",
+    body: "From logo placement to custom packaging, we handle all kinds of branding. You approve a digital mockup before anything goes to print.",
   },
   {
     icon: HeartHandshake,
@@ -17,11 +22,6 @@ const values = [
     icon: Rocket,
     title: "Built to scale",
     body: "Whether you're ordering for 10 employees or 10,000 clients, we're equipped to scale seamlessly and deliver personalized gifting solutions tailored to your needs",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Reliable delivery",
-    body: "Clear timelines, honest communication, and craftsmanship you can depend on.",
   },
 ];
 

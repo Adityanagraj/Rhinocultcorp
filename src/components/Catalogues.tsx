@@ -1,12 +1,8 @@
-import { FolderOpen } from "lucide-react";
 import Section, { SectionHeading } from "@/components/ui/Section";
 import Reveal from "@/components/ui/Reveal";
 import CatalogueCard from "@/components/CatalogueCard";
-import { GradientLink } from "@/components/ui/GradientButton";
+import ViewAllCataloguesButton from "@/components/ViewAllCataloguesButton";
 import { catalogues } from "@/config/catalogues";
-
-const ALL_CATALOGUES_URL =
-  "https://drive.google.com/drive/folders/1REUU7Z7mFoFX3-HHIpYMXpVsQBM8ksEf";
 
 export default function Catalogues() {
   return (
@@ -35,12 +31,7 @@ export default function Catalogues() {
         ))}
       </div>
 
-      <Reveal className="mt-10 flex justify-center">
-        <GradientLink href={ALL_CATALOGUES_URL} external variant="outline">
-          <FolderOpen size={18} />
-          View all catalogues
-        </GradientLink>
-      </Reveal>
+      <ViewAllCataloguesButton />
     </Section>
   );
 }

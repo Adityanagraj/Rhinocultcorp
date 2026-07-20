@@ -11,7 +11,7 @@ const clients: Client[] = [
   { name: "Atria University", logo: "/logos/atria.png" },
   { name: "Microsoft", logo: "/logos/microsoft.svg" },
   { name: "Salesforce", logo: "/logos/salesforce.svg" },
-  { name: "66 Gears" },
+  { name: "49 Gears" },
   { name: "Goavo", logo: "/logos/goavo.png" },
   { name: "Meta", logo: "/logos/meta.svg" },
   { name: "Nvidia", logo: "/logos/nvidia.svg" },

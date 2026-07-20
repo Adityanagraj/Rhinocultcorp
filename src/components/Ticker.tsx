@@ -2,7 +2,7 @@ import { Sparkles } from "lucide-react";
 
 const phrases = [
   "Successfully shipped 500+ corporate orders PAN India",
-  "Trusted by 50+ brands for premium gifting",
+  "Trusted by 500+ brands for premium gifting",
   "On-time delivery, every time",
 ];
 
