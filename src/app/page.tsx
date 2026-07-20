@@ -9,6 +9,7 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import Services from "@/components/Services";
 import Portfolio from "@/components/Portfolio";
 import Testimonials from "@/components/Testimonials";
+import SendGiftsAbroad from "@/components/SendGiftsAbroad";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -30,6 +31,7 @@ export default function Home() {
         <Services />
         <Portfolio />
         <Testimonials />
+        <SendGiftsAbroad />
         <Contact />
       </main>
       <Footer />
