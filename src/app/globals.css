@@ -1,14 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  /* Neutrals — crisp, cool-leaning off-white base with a rich near-black ink */
-  --color-bg: #f4f4f1;
+  /* Neutrals — soft mineral paper base (cleaner than cool gray, still warm enough
+     for terracotta + Fraunces/Shrikhand without tipping into heavy cream). */
+  --color-bg: #f6f5f2;
   --color-surface: #ffffff;
-  --color-surface-2: #ecebe6;
+  --color-surface-2: #ebe9e4;
   --color-ink: #171614;
   --color-ink-soft: #45433d;
   --color-muted: #77746b;
-  --color-line: #e3e1d9;
+  --color-line: #e0ddd6;
 
   /* Accent — a single, refined terracotta used sparingly for emphasis */
   --color-accent: #bb4d34;
