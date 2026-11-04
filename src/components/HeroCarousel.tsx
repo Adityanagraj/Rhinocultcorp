@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type TouchEvent } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useReducedMotion } from "framer-motion";
@@ -42,14 +42,15 @@ const slides: Slide[] = [
 const AUTO_MS = 4500;
 
 /**
- * Auto-advancing hero carousel. Works on mobile and desktop with the same
- * 16:9 frames (taller crop on small screens via object-cover). Pauses on
- * hover/focus and respects prefers-reduced-motion.
+ * Auto-advancing hero carousel. Landscape product shots stay landscape on
+ * mobile (no tall 4:5 crop) so gift spreads remain fully readable. Supports
+ * swipe, pauses on hover/focus, and respects prefers-reduced-motion.
  */
 export default function HeroCarousel() {
   const reduceMotion = useReducedMotion();
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const touchStartX = useRef<number | null>(null);
 
   const go = useCallback((dir: 1 | -1) => {
     setIndex((i) => (i + dir + slides.length) % slides.length);
@@ -63,9 +64,24 @@ export default function HeroCarousel() {
     return () => window.clearInterval(id);
   }, [go, paused, reduceMotion]);
 
+  const onTouchStart = (e: TouchEvent) => {
+    touchStartX.current = e.changedTouches[0]?.clientX ?? null;
+    setPaused(true);
+  };
+
+  const onTouchEnd = (e: TouchEvent) => {
+    const start = touchStartX.current;
+    touchStartX.current = null;
+    setPaused(false);
+    if (start == null) return;
+    const delta = e.changedTouches[0].clientX - start;
+    if (Math.abs(delta) < 40) return;
+    go(delta < 0 ? 1 : -1);
+  };
+
   return (
     <div
-      className="reveal-rise mx-auto max-w-5xl"
+      className="reveal-rise mx-auto w-full max-w-5xl"
       style={{ animationDelay: "0ms" }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
@@ -76,11 +92,13 @@ export default function HeroCarousel() {
         }
       }}
     >
-      <div className="relative overflow-hidden rounded-2xl border border-line bg-surface p-1.5 shadow-[0_50px_90px_-55px_rgba(23,21,15,0.5)] sm:rounded-[1.75rem] sm:p-2">
+      <div className="relative overflow-hidden rounded-2xl border border-line bg-surface p-1 shadow-[0_50px_90px_-55px_rgba(23,21,15,0.5)] sm:rounded-[1.75rem] sm:p-2">
         <div
-          className="relative aspect-[4/5] w-full overflow-hidden rounded-xl sm:aspect-[16/9] sm:rounded-[1.4rem]"
+          className="relative aspect-[16/10] w-full overflow-hidden rounded-[0.9rem] bg-ink/[0.04] sm:aspect-[16/9] sm:rounded-[1.4rem]"
           aria-roledescription="carousel"
           aria-label="Corporate gifting highlights"
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
         >
           {slides.map((slide, i) => (
             <div
@@ -95,25 +113,25 @@ export default function HeroCarousel() {
                 alt={slide.alt}
                 fill
                 priority={i === 0}
-                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1024px"
-                className="object-cover"
+                sizes="(max-width: 640px) 100vw, (max-width: 1280px) 90vw, 1024px"
+                className="object-cover object-center"
               />
               <div
                 aria-hidden
                 className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink/55 to-transparent"
               />
-              <p className="absolute bottom-4 left-4 rounded-full bg-bg/90 px-3 py-1 text-xs font-medium text-ink backdrop-blur sm:bottom-5 sm:left-5 sm:text-sm">
+              <p className="absolute bottom-3 left-3 max-w-[calc(100%-5.5rem)] truncate rounded-full bg-bg/90 px-3 py-1 text-xs font-medium text-ink backdrop-blur sm:bottom-5 sm:left-5 sm:max-w-none sm:text-sm">
                 {slide.caption}
               </p>
             </div>
           ))}
 
-          {/* Prev / next */}
+          {/* Prev / next — larger hit targets on touch devices */}
           <button
             type="button"
             aria-label="Previous slide"
             onClick={() => go(-1)}
-            className="absolute left-2 top-1/2 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full border border-white/30 bg-ink/45 text-white backdrop-blur transition hover:bg-ink/65 sm:left-3 sm:h-10 sm:w-10"
+            className="absolute left-1.5 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-white/30 bg-ink/45 text-white backdrop-blur transition hover:bg-ink/65 sm:left-3 sm:h-10 sm:w-10"
           >
             <ChevronLeft size={18} />
           </button>
@@ -121,14 +139,14 @@ export default function HeroCarousel() {
             type="button"
             aria-label="Next slide"
             onClick={() => go(1)}
-            className="absolute right-2 top-1/2 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full border border-white/30 bg-ink/45 text-white backdrop-blur transition hover:bg-ink/65 sm:right-3 sm:h-10 sm:w-10"
+            className="absolute right-1.5 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-white/30 bg-ink/45 text-white backdrop-blur transition hover:bg-ink/65 sm:right-3 sm:h-10 sm:w-10"
           >
             <ChevronRight size={18} />
           </button>
         </div>
 
         {/* Dots */}
-        <div className="flex items-center justify-center gap-2 py-3 sm:py-3.5">
+        <div className="flex items-center justify-center gap-2 py-2.5 sm:py-3.5">
           {slides.map((slide, i) => (
             <button
               key={slide.src}
@@ -136,8 +154,8 @@ export default function HeroCarousel() {
               aria-label={`Go to slide ${i + 1}: ${slide.caption}`}
               aria-current={i === index}
               onClick={() => goTo(i)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                i === index ? "w-6 bg-accent" : "w-2 bg-ink/20 hover:bg-ink/40"
+              className={`h-2.5 rounded-full transition-all duration-300 sm:h-2 ${
+                i === index ? "w-6 bg-accent" : "w-2.5 bg-ink/20 hover:bg-ink/40 sm:w-2"
               }`}
             />
           ))}
